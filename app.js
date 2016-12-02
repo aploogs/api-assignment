@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,6 +10,8 @@ mongoose.connect( 'mongodb://localhost/react-starter' );
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var Books = require('./routes/books');
+
 
 var app = express();
 
@@ -35,6 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/tweets', tweets);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
